@@ -29,8 +29,8 @@ const CzechHolidays = (() => {
     localStorage.setItem(`holidays-${currentYear}`, JSON.stringify(holidays));
   }
 
-  function initializeHolidays(): Map<string, string> {
-    const holidays = getHolidayForYear(currentYear, true);
+  function getHolidayMap(year: number): Map<string, string> {
+    const holidays = getHolidayForYear(year, true);
     const holidayMap = new Map<string, string>();
     holidays.forEach((h) => holidayMap.set(`${h.day}-${h.month}`, h.name));
     return holidayMap;
@@ -63,23 +63,29 @@ const CzechHolidays = (() => {
     return holidays;
   }
 
-  const holidayMap = initializeHolidays();
+  let holidayMap = getHolidayMap(currentYear);
 
-  function isHoliday(date: Date): boolean {
+  function getMapKey(date: Date): string {
     const day = date.getDate();
     const month = date.getMonth() + 1;
-    const key = `${day}-${month}`;
-    return holidayMap.has(key);
+    const year = date.getFullYear();
+
+    if (year !== currentYear) {
+      holidayMap = getHolidayMap(year)
+    }
+    
+    return `${day}-${month}`
+  }
+  
+  function isHoliday(date: Date): boolean {
+    return holidayMap.has(getMapKey(date));
   }
 
   function getHolidayName(date: Date): string | null {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const key = `${day}-${month}`;
-    return holidayMap.get(key) || null;
+    return holidayMap.get(getMapKey(date)) || null;
   }
 
-  return { isHoliday, getHolidayName };
+  return { isHoliday, getHolidayName, getHolidayForYear };
 })();
 
 export default CzechHolidays;
