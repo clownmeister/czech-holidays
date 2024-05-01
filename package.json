@@ -1,7 +1,7 @@
 {
   "name": "@clownmeister/czech-holidays",
   "type": "module",
-  "version": "1.0.0-b4",
+  "version": "1.0.0-b5",
   "description": "Provides Czech holidays with no historical data. Supports local storage caching.",
   "repository": {
     "url": "https://github.com/clownmeister/czech-holidays"
@@ -11,7 +11,7 @@
     "access": "public",
     "@clownmeister:registry": "https://npm.pkg.github.com"
   },
-  "main": "./dist/czech-holidays.js",
+  "main": "./dist/czech-holidays.esm.js",
   "types": "dist/czech-holidays.d.ts",
   "exports": {
     ".": {
