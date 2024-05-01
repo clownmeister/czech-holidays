@@ -7,17 +7,17 @@ export interface Holiday {
 const CzechHolidays = (() => {
   const currentYear = new Date().getFullYear();
   const fixedHolidays: Holiday[] = [
-    {day: 1, month: 1, name: "Den obnovy samostatného českého státu"},
-    {day: 1, month: 5, name: "Svátek práce"},
-    {day: 8, month: 5, name: "Den vítězství"},
-    {day: 5, month: 7, name: "Den slovanských věrozvěstů Cyrila a Metoděje"},
-    {day: 6, month: 7, name: "Den upálení mistra Jana Husa"},
-    {day: 28, month: 9, name: "Den české státnosti"},
-    {day: 28, month: 10, name: "Den vzniku samostatného československého státu"},
-    {day: 17, month: 11, name: "Den boje za svobodu a demokracii"},
-    {day: 24, month: 12, name: "Štědrý den"},
-    {day: 25, month: 12, name: "1. svátek vánoční"},
-    {day: 26, month: 12, name: "2. svátek vánoční"}
+    { day: 1, month: 1, name: 'Den obnovy samostatného českého státu' },
+    { day: 1, month: 5, name: 'Svátek práce' },
+    { day: 8, month: 5, name: 'Den vítězství' },
+    { day: 5, month: 7, name: 'Den slovanských věrozvěstů Cyrila a Metoděje' },
+    { day: 6, month: 7, name: 'Den upálení mistra Jana Husa' },
+    { day: 28, month: 9, name: 'Den české státnosti' },
+    { day: 28, month: 10, name: 'Den vzniku samostatného československého státu' },
+    { day: 17, month: 11, name: 'Den boje za svobodu a demokracii' },
+    { day: 24, month: 12, name: 'Štědrý den' },
+    { day: 25, month: 12, name: '1. svátek vánoční' },
+    { day: 26, month: 12, name: '2. svátek vánoční' }
   ];
 
   function getStoredHolidays(): Holiday[] | null {
@@ -32,7 +32,7 @@ const CzechHolidays = (() => {
   function initializeHolidays(): Map<string, string> {
     const holidays = getHolidayForYear(currentYear, true);
     const holidayMap = new Map<string, string>();
-    holidays.forEach(h => holidayMap.set(`${h.day}-${h.month}`, h.name));
+    holidays.forEach((h) => holidayMap.set(`${h.day}-${h.month}`, h.name));
     return holidayMap;
   }
 
@@ -44,17 +44,17 @@ const CzechHolidays = (() => {
         {
           day: easterHolidays.goodFriday.getDate(),
           month: easterHolidays.goodFriday.getMonth() + 1,
-          name: "Velký pátek"
+          name: 'Velký pátek'
         },
         {
           day: easterHolidays.easterSunday.getDate(),
           month: easterHolidays.easterSunday.getMonth() + 1,
-          name: "Velikonoční neděle"
+          name: 'Velikonoční neděle'
         },
         {
           day: easterHolidays.easterMonday.getDate(),
           month: easterHolidays.easterMonday.getMonth() + 1,
-          name: "Velikonoční pondělí"
+          name: 'Velikonoční pondělí'
         }
       ]);
       if (useLocalStorage) storeHolidays(holidays);
@@ -62,7 +62,6 @@ const CzechHolidays = (() => {
 
     return holidays;
   }
-
 
   const holidayMap = initializeHolidays();
 
@@ -80,12 +79,16 @@ const CzechHolidays = (() => {
     return holidayMap.get(key) || null;
   }
 
-  return {isHoliday, getHolidayName};
+  return { isHoliday, getHolidayName };
 })();
 
 export default CzechHolidays;
 
-function calculateEasterHolidays(year: number): { easterSunday: Date; goodFriday: Date; easterMonday: Date } {
+function calculateEasterHolidays(year: number): {
+  easterSunday: Date;
+  goodFriday: Date;
+  easterMonday: Date;
+} {
   const a = year % 19;
   const b = Math.floor(year / 100);
   const c = year % 100;
