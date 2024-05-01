@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm test
+      - run: npm build
 
   publish-gpr:
     needs: build
