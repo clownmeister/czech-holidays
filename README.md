@@ -67,5 +67,7 @@ and save it to local storage based on if it already exists.
 
 `CzechHolidays.getHolidayForYear(2024, true);`
 
+Other methods already use localstorage out of the box.
+
 ## License
 This project is licensed under the terms of the MIT License - see the [LICENSE](./LICENSE.md) file for details.
