@@ -1,0 +1,4 @@
+node_modules
+public
+.eslintrc.cjs
+vite.common.config.ts
