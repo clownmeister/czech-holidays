@@ -1,7 +1,7 @@
 # @clownmeister/czech-holidays
 
-![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays)
+![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?style=flat-square)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?style=flat-square)
 
 ## Overview
 
