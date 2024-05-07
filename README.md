@@ -3,6 +3,8 @@
 ![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?style=flat-square)
 
+WIP having some problems with release atm. Be patient thanks.
+
 ## Overview
 
 `@clownmeister/czech-holidays` is a lightweight TypeScript package for managing Czech holidays. It provides functionality to determine if a given date is a Czech holiday and to retrieve the name of a holiday for a specific date.
