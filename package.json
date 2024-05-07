@@ -4,7 +4,7 @@
   "version": "1.0.0-b7",
   "description": "Provides Czech holidays with no historical data. Supports local storage caching.",
   "repository": {
-    "url": "https://github.com/clownmeister/czech-holidays"
+    "url": "git+https://github.com/clownmeister/czech-holidays.git"
   },
   "author": "ClownMeister",
   "publishConfig": {
