@@ -1,3 +1,4 @@
-import CzechHolidays, { Holiday } from '@app/components/CzechHolidays';
+import CzechHolidays from '@app/components/CzechHolidays';
 
-export { CzechHolidays, type Holiday };
+export * from '@app/components/CzechHolidays';
+export default CzechHolidays
