@@ -30,7 +30,6 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      - uses: borales/actions-yarn@v4
       - run: corepack enable
       - run: yarn install --frozen-lockfile
       - run: yarn publish
