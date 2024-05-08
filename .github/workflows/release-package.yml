@@ -1,5 +1,9 @@
 name: Release NPM package
-
+#https://yarnpkg.com/configuration/yarnrc#npmAuthToken
+#https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+#https://github.com/actions/setup-node?tab=readme-ov-file
+#https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-yarn
+#https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data
 #on:
 #  release:
 #    types: [created]
