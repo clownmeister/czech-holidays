@@ -7,7 +7,7 @@ WIP having some problems with release atm. Be patient thanks.
 
 ## Overview
 
-`@clownmeister/czech-holidays` is a lightweight TypeScript package for managing Czech holidays. It provides functionality to determine if a given date is a Czech holiday and to retrieve the name of a holiday for a specific date.
+`@clownmeister/czech-holidays` is a lightweight TypeScript package for managing public Czech holidays.
 
 ## Features
 
@@ -29,42 +29,75 @@ npm install @clownmeister/czech-holidays
 yarn add @clownmeister/czech-holidays
 ```
 
-## Usage
+## API Reference
 
-Example usage:
+Below is the list of functions exposed by `@clownmeister/czech-holidays` along with their descriptions and parameters.
+
+| Function             | Description                                                                                          | Parameters                                                                      | Return Type       |
+|----------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|-------------------|
+| `isHoliday`          | Checks if a specified date is a Czech holiday.                                                       | `date: Date`                                                                    | `boolean`         |
+| `getHolidayName`     | Retrieves the localized name of the holiday for a given date.                                        | `date: Date`, `locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech` | `string \| null`  |
+| `getHoliday`         | Returns the holiday object for a given date.                                                         | `date: Date`                                                                    | `Holiday \| null` |
+| `getHolidaysForYear` | Fetches all Czech holidays for a specified year. Optionally uses local storage to cache the results. | `year: number`, `useLocalStorage: boolean = false`                              | `Holiday[]`       |
+
+### Function Details
+
+- **`isHoliday(date: Date): boolean`**  
+  Checks if the provided date is a recognized Czech holiday by looking up the date in the internal holiday map.
+
+- **`getHolidayName(date: Date, locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech): string \| null`**  
+  Returns the name of the holiday on the given date in the specified locale (`'cs'` for Czech, `'en'` for English).
+  Returns `null` if there is no holiday on that date.
+
+- **`getHoliday(date: Date): Holiday \| null`**  
+  Retrieves the full `Holiday` object for the specified date, providing detailed information such as the day, month,
+  name, description, and shop restriction status.
+
+- **`getHolidaysForYear(year: number, useLocalStorage: boolean = false): Holiday[]`**  
+  Compiles a list of all holidays for the specified year. If `useLocalStorage` is true, it will fetch the holidays from
+  local storage if available or calculate and store them otherwise.
+
+## Usage examples
+
+### Check if a Date is a Holiday
 
 ```typescript
-import CzechHolidays, {type Holiday} from '@clownmeister/czech-holidays';
-
-// Check if a date is a Czech holiday
 const date = new Date('2024-12-24');
 const isHoliday = CzechHolidays.isHoliday(date);
-if (isHoliday) {
-  console.log('This is a Czech holiday!');
-} else {
-  console.log('This is not a Czech holiday.');
-}
-//o: This is a Czech holiday!
-
-// Get the name of a Czech holiday for a given date
-const holidayName = CzechHolidays.getHolidayName(date);
-console.log(`The holiday on ${date.toDateString()} is: ${holidayName}`);
-//o: The holiday on Mon Dec 24 2024 is: Štědrý den
-
-// Get all Czech holidays for a specific year
-const holidaysForYear: Holiday[] = CzechHolidays.getHolidayForYear(2024);
-console.log('Czech holidays for 2024:', holidaysForYear);
-//o: Czech holidays for 2024: [
-//   { day: 1, month: 1, name: 'Den obnovy samostatného českého státu' },
-//   { day: 1, month: 5, name: 'Svátek práce' },
-//   { day: 8, month: 5, name: 'Den vítězství' },
-//   ... ]
+console.log(isHoliday);  // Outputs: true if the date is a holiday
 ```
 
-### Caching
+### Get the Name of a Holiday
 
-If you call `getHolidayForYear` with second parameter `true`, 
-it will fetch from local storage or regenerate 
+```typescript
+const holidayName = CzechHolidays.getHolidayName(date, HolidaySupportedLocales.English);
+console.log(`Holiday: ${holidayName}`);  // Outputs the name of the holiday if it's a holiday
+```
+
+### Get Holiday Details
+
+```typescript
+const holidayDetails = CzechHolidays.getHoliday(date);
+console.log(holidayDetails);  // Outputs the Holiday object with details
+```
+
+### Get All Holidays for a Year
+
+```typescript
+const holidays = CzechHolidays.getHolidaysForYear(2024, true);
+console.log(holidays);  // Outputs an array of Holiday objects for the year 2024
+```
+
+### Holiday output format
+
+```typescript
+TBA
+```
+
+## Caching
+
+If you call `getHolidayForYear` with second parameter `true`,
+it will fetch from local storage or regenerate
 and save it to local storage based on if it already exists.
 
 `CzechHolidays.getHolidayForYear(2024, true);`
@@ -72,4 +105,5 @@ and save it to local storage based on if it already exists.
 Other methods already use localstorage out of the box.
 
 ## License
+
 This project is licensed under the terms of the MIT License - see the [LICENSE](./LICENSE.md) file for details.
