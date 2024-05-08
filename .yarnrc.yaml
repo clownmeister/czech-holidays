@@ -7,7 +7,7 @@ npmPublishRegistry: 'https://registry.npmjs.org'
 npmScopes:
   clownmeister:
     npmAlwaysAuth: true
-    npmAuthToken: '${NPM_TOKEN}'
+    npmAuthToken: '${NODE_AUTH_TOKEN}'
     npmPublishRegistry: 'https://registry.npmjs.org'
     npmRegistryServer: 'https://registry.npmjs.org'
 
