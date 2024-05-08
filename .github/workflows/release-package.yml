@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: 22
           cache: yarn
+          scope: clownmeister
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: corepack enable
