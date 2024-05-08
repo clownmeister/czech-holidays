@@ -30,7 +30,9 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      - run: yarn install --frozen-lockfile
+      - uses: borales/actions-yarn@v4
+        with:
+          cmd: install --frozen-lockfile
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
