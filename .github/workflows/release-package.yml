@@ -30,9 +30,12 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - id: build-and-publish
-        name: Build and publish package
-        uses: actions/setup-node@v4
+        name: Checkout source code
+      - uses: actions/setup-node@v4
+        name: Prepare Node Environment
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Build and publish package
         with:
           node-version: 22
           cache: yarn
