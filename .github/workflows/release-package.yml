@@ -35,12 +35,7 @@ jobs:
           node-version: 22
           cache: yarn
           scope: clownmeister
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: corepack enable
+      - run: export NPM_TOKEN="${{secrets.NPM_TOKEN}}"
       - run: yarn install --immutable
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: yarn npm publish
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
