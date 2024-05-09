@@ -33,13 +33,13 @@ jobs:
         name: Checkout source code
       - uses: actions/setup-node@v4
         name: Prepare Node Environment
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-      - name: Build and publish package
         with:
           node-version: 22
           cache: yarn
           scope: clownmeister
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Build and publish package
         run: |
           corepack enable
           yarn install --immutable
