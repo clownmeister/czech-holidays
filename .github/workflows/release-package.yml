@@ -30,12 +30,12 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - run: export NPM_TOKEN="${{secrets.NPM_TOKEN}}"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: yarn
           scope: clownmeister
       - run: corepack enable
-      - run: export NPM_TOKEN="${{secrets.NPM_TOKEN}}"
       - run: yarn install --immutable
       - run: yarn npm publish
