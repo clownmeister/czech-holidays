@@ -30,16 +30,17 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - id: build-and-publish
+        name: Build and publish package
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: yarn
           scope: clownmeister
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: | #Build and Publish
+        run: |
           corepack enable
           yarn install --immutable
           yarn build
           yarn npm publish
-
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
