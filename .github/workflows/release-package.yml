@@ -37,8 +37,8 @@ jobs:
           scope: clownmeister
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: corepack enable
       - run: yarn install --immutable
       - run: yarn npm publish
-
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
