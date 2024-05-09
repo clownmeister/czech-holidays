@@ -3,8 +3,6 @@
 ![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?style=flat-square)
 
-WIP having some problems with release atm. Be patient thanks.
-
 ## Overview
 
 `@clownmeister/czech-holidays` is a lightweight TypeScript package for managing public Czech holidays.
@@ -31,25 +29,25 @@ yarn add @clownmeister/czech-holidays
 
 ## API Reference
 
-Below is the list of functions exposed by `@clownmeister/czech-holidays` along with their descriptions and parameters.
+Below is the list of public functions along with their descriptions and parameters.
 
-| Function             | Description                                                                                          | Parameters                                                                      | Return Type       |
-|----------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|-------------------|
-| `isHoliday`          | Checks if a specified date is a Czech holiday.                                                       | `date: Date`                                                                    | `boolean`         |
-| `getHolidayName`     | Retrieves the localized name of the holiday for a given date.                                        | `date: Date`, `locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech` | `string \| null`  |
-| `getHoliday`         | Returns the holiday object for a given date.                                                         | `date: Date`                                                                    | `Holiday \| null` |
-| `getHolidaysForYear` | Fetches all Czech holidays for a specified year. Optionally uses local storage to cache the results. | `year: number`, `useLocalStorage: boolean = false`                              | `Holiday[]`       |
+| Function             | Description                                                                                          | Parameters                                                | Return Type       |
+|----------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|-------------------|
+| `isHoliday`          | Checks if a specified date is a Czech holiday.                                                       | `date: Date`                                              | `boolean`         |
+| `getHolidayName`     | Retrieves the localized name of the holiday for a given date.                                        | `date: Date`<br/>`locale: HolidaySupportedLocales = 'cs'` | `string \| null`  |
+| `getHoliday`         | Returns the holiday object for a given date.                                                         | `date: Date`                                              | `Holiday \| null` |
+| `getHolidaysForYear` | Fetches all Czech holidays for a specified year. Optionally uses local storage to cache the results. | `year: number`<br/>`useLocalStorage: boolean = false`     | `Holiday[]`       |
 
 ### Function Details
 
 - **`isHoliday(date: Date): boolean`**  
   Checks if the provided date is a recognized Czech holiday by looking up the date in the internal holiday map.
 
-- **`getHolidayName(date: Date, locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech): string \| null`**  
+- **`getHolidayName(date: Date, locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech): string | null`**  
   Returns the name of the holiday on the given date in the specified locale (`'cs'` for Czech, `'en'` for English).
   Returns `null` if there is no holiday on that date.
 
-- **`getHoliday(date: Date): Holiday \| null`**  
+- **`getHoliday(date: Date): Holiday | null`**  
   Retrieves the full `Holiday` object for the specified date, providing detailed information such as the day, month,
   name, description, and shop restriction status.
 
