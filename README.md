@@ -5,7 +5,7 @@
 
 ## Overview
 
-`@clownmeister/czech-holidays` is a lightweight TypeScript package for managing public Czech holidays.
+`@clownmeister/czech-holidays` is a lightweight package for managing public Czech holidays.
 
 ## Features
 
@@ -26,6 +26,15 @@ npm install @clownmeister/czech-holidays
 # Using yarn
 yarn add @clownmeister/czech-holidays
 ```
+
+### Import
+
+```typescript
+//Typescript
+import CzechHolidays, {HolidaySupportedLocales} from '@clownmeister/czech-holidays';
+```
+
+
 
 ## API Reference
 
@@ -88,8 +97,30 @@ console.log(holidays);  // Outputs an array of Holiday objects for the year 2024
 
 ### Holiday output format
 
+```json
+{
+  "day": 24,
+  "month": 12,
+  "name": {
+    "cs": "Štědrý den",
+    "en": "Christmas Eve"
+  },
+  "description": {
+    "cs": "",
+    "en": "Christmas is celebrated during the evening of the 24th."
+  },
+  "shopRestriction": 2
+}
+```
+
+### Shop restriction enum
+
 ```typescript
-TBA
+enum HolidayShopRestriction {
+  Open, //=0
+  Closed, //=1
+  Partial, //=2 - When shops close after set time
+}
 ```
 
 ## Caching

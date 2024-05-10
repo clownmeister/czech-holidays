@@ -13,11 +13,6 @@
   },
   "main": "./dist/czech-holidays.esm.js",
   "types": "dist/czech-holidays.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/czech-holidays.js"
-    }
-  },
   "files": [
     "dist/**/*"
   ],

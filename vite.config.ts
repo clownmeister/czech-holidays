@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     resolve: {
       alias: {
-        '@app': '/src'
+        '@app': resolve(__dirname, 'src')
       }
     },
     build: {
