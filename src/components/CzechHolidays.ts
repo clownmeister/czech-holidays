@@ -1,4 +1,4 @@
-import {getEasterHolidays, getFixedHolidays} from '@app/components/DataProvider.ts';
+import { getEasterHolidays, getFixedHolidays } from '@app/components/DataProvider.ts';
 
 export interface LocalizedText {
   cs: string;
@@ -12,7 +12,7 @@ export interface Holiday {
   month: number;
   name: LocalizedText;
   description: LocalizedText;
-  shopRestriction: HolidayShopRestriction
+  shopRestriction: HolidayShopRestriction;
 }
 
 export enum HolidayShopRestriction {
@@ -65,10 +65,10 @@ const CzechHolidays = (() => {
     const year = date.getFullYear();
 
     if (year !== currentYear) {
-      holidayMap = getHolidayMap(year)
+      holidayMap = getHolidayMap(year);
     }
 
-    return `${day}-${month}`
+    return `${day}-${month}`;
   }
 
   function isHoliday(date: Date): boolean {

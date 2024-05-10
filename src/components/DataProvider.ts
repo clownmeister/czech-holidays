@@ -1,5 +1,5 @@
-import {Holiday, HolidayShopRestriction} from '@app/components/CzechHolidays.ts';
-import {calculateEasterHolidays} from '@app/components/EasterCalculator.ts';
+import { Holiday, HolidayShopRestriction } from '@app/components/CzechHolidays.ts';
+import { calculateEasterHolidays } from '@app/components/EasterCalculator.ts';
 
 export function getEasterHolidays(year: number): Holiday[] {
   const easterHolidays = calculateEasterHolidays(year);
