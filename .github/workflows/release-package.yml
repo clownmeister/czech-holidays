@@ -37,8 +37,6 @@ jobs:
           node-version: 22
           cache: yarn
           scope: clownmeister
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Build and publish package
         run: |
           corepack enable
@@ -46,4 +44,4 @@ jobs:
           yarn build
           yarn npm publish
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
