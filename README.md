@@ -1,7 +1,8 @@
 # @clownmeister/czech-holidays
 
-![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?label=License&style=flat-square)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?label=Version&style=flat-square)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clownmeister/czech-holidays/main-flow.yml?branch=master&style=flat-square&link=https%3A%2F%2Fgithub.com%2Fclownmeister%2Fczech-holidays%2Factions%2Fworkflows%2Fmain-flow.yml%3Fquery%3Dbranch%253Amaster)
 
 ## Overview
 
