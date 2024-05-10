@@ -37,11 +37,14 @@ jobs:
           node-version: 22
           cache: yarn
           scope: clownmeister
+      - name: Setup .yarnrc.yml
+        run: |
+          yarn config set npmScopes.clownmeister.npmAuthToken $NPM_AUTH_TOKEN
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build and publish package
         run: |
           corepack enable
           yarn install --immutable
           yarn build
           yarn npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
