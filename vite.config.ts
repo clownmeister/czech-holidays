@@ -3,8 +3,7 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import autoprefixer from 'autoprefixer';
 
-export default defineConfig(({ mode }) => {
-  return {
+export default defineConfig({
     resolve: {
       alias: {
         '@app': resolve(__dirname, 'src')
@@ -14,7 +13,7 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
         fileName: 'czech-holidays',
-        formats: ['esm']
+        formats: ['es']
       },
       sourcemap: true,
       minify: true
@@ -33,6 +32,5 @@ export default defineConfig(({ mode }) => {
       port: 5176,
       open: true
     }
-  };
 });
 

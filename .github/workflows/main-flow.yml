@@ -1,4 +1,4 @@
-name: Release NPM package
+name: Main flow
 #https://yarnpkg.com/configuration/yarnrc#npmAuthToken
 #https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 #https://github.com/actions/setup-node?tab=readme-ov-file
@@ -8,22 +8,33 @@ name: Release NPM package
 #  release:
 #    types: [created]
 on:
-  workflow_dispatch:
+  push:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
-#  test:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v4
-#      - uses: actions/setup-node@v4
-#        with:
-#          node-version: 22
-#      - run: npm install
-#      - run: npm test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout source code
+      - uses: actions/setup-node@v4
+        name: Prepare Node Environment
+        with:
+          node-version: 22
+          cache: yarn
+          scope: clownmeister
+      - name: Build and test
+        run: |
+          corepack enable
+          yarn install --immutable
+          yarn build
+          yarn test
+
   publish-package:
-#    needs: test
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       packages: write

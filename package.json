@@ -1,7 +1,7 @@
 {
   "name": "@clownmeister/czech-holidays",
   "type": "module",
-  "version": "1.0.0-b9",
+  "version": "1.0.0-b10",
   "description": "Provides Czech holidays with no historical data. Supports local storage caching.",
   "repository": {
     "url": "git+https://github.com/clownmeister/czech-holidays.git"
@@ -24,16 +24,20 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --check ./src",
-    "format:fix": "prettier --write ./src"
+    "format:fix": "prettier --write ./src",
+    "test": "vitest --run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.7",
     "autoprefixer": "^10.4.19",
+    "jsdom": "^24.0.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "vite": "^5.2.10",
     "vite-plugin-dts": "^3.9.0",
-    "vitest": "^1.5.3"
+    "vitest": "^1.6.0"
   }
 }
