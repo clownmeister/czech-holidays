@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clownmeister.github.io/czech-holidays/sitemap.xml
