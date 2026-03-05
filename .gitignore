@@ -131,6 +131,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# IDE
+.idea/
+
 # Claude Code
 CLAUDE.md
 .claude/
