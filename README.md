@@ -1,8 +1,9 @@
 # @clownmeister/czech-holidays
 
-![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?label=License&style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?label=Version&style=flat-square)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clownmeister/czech-holidays/main-flow.yml?label=Tests&branch=master&style=flat-square&link=https%3A%2F%2Fgithub.com%2Fclownmeister%2Fczech-holidays%2Factions%2Fworkflows%2Fmain-flow.yml%3Fquery%3Dbranch%253Amaster)
+[![npm version](https://img.shields.io/npm/v/@clownmeister/czech-holidays?label=npm&style=flat-square)](https://www.npmjs.com/package/@clownmeister/czech-holidays)
+[![CI](https://img.shields.io/github/actions/workflow/status/clownmeister/czech-holidays/main-flow.yml?branch=master&label=CI&style=flat-square)](https://github.com/clownmeister/czech-holidays/actions/workflows/main-flow.yml?query=branch%3Amaster)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@clownmeister/czech-holidays?label=size&style=flat-square)](https://bundlephobia.com/package/@clownmeister/czech-holidays)
+[![license](https://img.shields.io/github/license/clownmeister/czech-holidays?label=license&style=flat-square)](./LICENSE.md)
 
 Zero-dependency Czech public holiday library. Works in Node.js, browsers, and any JS runtime.
 
