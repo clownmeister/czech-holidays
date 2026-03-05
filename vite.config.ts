@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
     resolve: {
@@ -12,25 +11,21 @@ export default defineConfig({
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
+        name: 'CzechHolidays',
         fileName: 'czech-holidays',
-        formats: ['es']
+        formats: ['es', 'cjs', 'umd']
       },
       sourcemap: true,
-      minify: true
+      minify: true,
+      rollupOptions: {
+        output: {
+          exports: 'named'
+        }
+      }
     },
     plugins: [
       dts({
         insertTypesEntry: true
       })
-    ],
-    css: {
-      postcss: {
-        plugins: [autoprefixer({})]
-      }
-    },
-    server: {
-      port: 5176,
-      open: true
-    }
+    ]
 });
-

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Czech Holidays 2025 — Public Holidays, Business Days & Calendar</title>
+  <meta name="description" content="Interactive Czech public holiday calendar. Check business days, shop restrictions, long weekends, and bridge days. Plan your year with ease. České státní svátky." />
+  <meta name="keywords" content="czech holidays, české svátky, public holidays czech republic, business days czech, czech calendar, státní svátky, pracovní dny, czech shop restrictions" />
+  <meta name="author" content="ClownMeister" />
+  <link rel="canonical" href="https://clownmeister.github.io/czech-holidays/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Czech Holidays — Interactive Public Holiday Calendar" />
+  <meta property="og:description" content="Check Czech public holidays, business days, shop restrictions, long weekends, and bridge days. Plan your year." />
+  <meta property="og:url" content="https://clownmeister.github.io/czech-holidays/" />
+  <meta property="og:site_name" content="Czech Holidays" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="cs_CZ" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Czech Holidays — Interactive Public Holiday Calendar" />
+  <meta name="twitter:description" content="Check Czech public holidays, business days, shop restrictions, long weekends, and bridge days." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127464;&#127487;</text></svg>" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Czech Holidays Calendar",
+    "description": "Interactive Czech public holiday calendar with business day calculations, shop restrictions, long weekends, and bridge days.",
+    "url": "https://clownmeister.github.io/czech-holidays/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0" },
+    "inLanguage": ["en", "cs"],
+    "author": {
+      "@type": "Person",
+      "name": "ClownMeister",
+      "url": "https://github.com/clownmeister"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="header-top">
+        <h1 id="page-title">Czech Holidays</h1>
+        <div class="lang-picker">
+          <button id="lang-cs" class="lang-btn" data-lang="cs">CZ</button>
+          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <p class="subtitle"><span id="subtitle-text">Interactive calendar powered by</span> <a href="https://www.npmjs.com/package/@clownmeister/czech-holidays" target="_blank">@clownmeister/czech-holidays</a></p>
+    </header>
+
+    <div class="stats-bar" id="stats-bar"></div>
+
+    <div class="layout">
+      <main>
+        <div class="calendar-header">
+          <button id="prev-month" aria-label="Previous month">&larr;</button>
+          <h2 id="month-title"></h2>
+          <div class="calendar-header-actions">
+            <button id="view-toggle" class="view-toggle-btn" aria-label="Toggle year view">
+              <span id="view-toggle-icon">&#9638;</span>
+            </button>
+            <button id="next-month" aria-label="Next month">&rarr;</button>
+          </div>
+        </div>
+        <div id="month-view">
+          <div class="calendar-grid">
+            <div id="weekday-headers"></div>
+            <div id="calendar-cells"></div>
+          </div>
+        </div>
+        <div id="year-view" class="year-view hidden"></div>
+        <div class="legend" id="legend"></div>
+      </main>
+
+      <aside>
+        <div class="panel" id="next-holiday-panel">
+          <h3 id="next-holiday-title">Next holiday</h3>
+          <div id="next-holiday-content"></div>
+        </div>
+
+        <div class="panel" id="month-holidays-panel">
+          <h3 id="month-holidays-title">Holidays this month</h3>
+          <div id="month-holidays-list"></div>
+        </div>
+
+        <div class="panel" id="long-weekends-panel">
+          <h3 id="long-weekends-title">Long weekends this year</h3>
+          <div id="long-weekends-list"></div>
+        </div>
+
+        <div class="panel" id="bridge-days-panel">
+          <h3 id="bridge-days-title">Bridge days this year</h3>
+          <p class="panel-hint" id="bridge-hint">Take 1 day off, get a longer break</p>
+          <div id="bridge-days-list"></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <a href="https://github.com/clownmeister/czech-holidays" target="_blank">GitHub</a>
+      <a href="https://www.npmjs.com/package/@clownmeister/czech-holidays" target="_blank">npm</a>
+    </footer>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

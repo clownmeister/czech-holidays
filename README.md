@@ -1,139 +1,167 @@
 # @clownmeister/czech-holidays
 
-![GitHub license](https://img.shields.io/github/license/clownmeister/czech-holidays?label=License&style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/clownmeister/czech-holidays?label=Version&style=flat-square)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clownmeister/czech-holidays/main-flow.yml?label=Tests&branch=master&style=flat-square&link=https%3A%2F%2Fgithub.com%2Fclownmeister%2Fczech-holidays%2Factions%2Fworkflows%2Fmain-flow.yml%3Fquery%3Dbranch%253Amaster)
+[![npm version](https://img.shields.io/npm/v/@clownmeister/czech-holidays?label=npm&style=flat-square)](https://www.npmjs.com/package/@clownmeister/czech-holidays)
+[![CI](https://img.shields.io/github/actions/workflow/status/clownmeister/czech-holidays/main-flow.yml?branch=master&label=CI&style=flat-square)](https://github.com/clownmeister/czech-holidays/actions/workflows/main-flow.yml?query=branch%3Amaster)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@clownmeister/czech-holidays?label=size&style=flat-square)](https://bundlephobia.com/package/@clownmeister/czech-holidays)
+[![license](https://img.shields.io/github/license/clownmeister/czech-holidays?label=license&style=flat-square)](./LICENSE.md)
 
-## Overview
+Zero-dependency Czech public holiday library. Works in Node.js, browsers, and any JS runtime.
 
-`@clownmeister/czech-holidays` is a lightweight package for managing public Czech holidays.
+**[Live Demo & Calendar](https://clownmeister.github.io/czech-holidays/)**
 
-## Features
-
-- Determine if a date is a Czech holiday.
-- Retrieve the name of a Czech holiday for a given date.
-- Includes fixed holidays and dynamically calculated Easter holidays.
-- Easy to integrate with TypeScript projects.
-- Optional caching into local storage.
-
-## Installation
-
-You can install `@clownmeister/czech-holidays` via npm or yarn:
+## Install
 
 ```bash
-# Using npm
 npm install @clownmeister/czech-holidays
-
-# Using yarn
+# or
 yarn add @clownmeister/czech-holidays
+# or
+pnpm add @clownmeister/czech-holidays
 ```
 
-### Import
+### ESM (recommended)
+```typescript
+import CzechHolidays from '@clownmeister/czech-holidays';
+import type { Holiday, DatedHoliday } from '@clownmeister/czech-holidays';
+```
+
+### CommonJS
+```javascript
+const { default: CzechHolidays } = require('@clownmeister/czech-holidays');
+```
+
+### CDN / `<script>` tag
+```html
+<script src="https://unpkg.com/@clownmeister/czech-holidays"></script>
+<script>
+  const { default: CzechHolidays } = CzechHolidays;
+  console.log(CzechHolidays.isHoliday(new Date()));
+</script>
+```
+
+Also available via jsDelivr:
+```
+https://cdn.jsdelivr.net/npm/@clownmeister/czech-holidays
+```
+
+## Quick start
 
 ```typescript
-//Typescript
-import CzechHolidays, {HolidaySupportedLocales} from '@clownmeister/czech-holidays';
+import CzechHolidays, { HolidaySupportedLocales } from '@clownmeister/czech-holidays';
+
+// Is today a holiday?
+CzechHolidays.isHoliday(new Date('2024-12-24')); // true
+
+// Get the name
+CzechHolidays.getHolidayName(new Date('2024-12-24'), HolidaySupportedLocales.English);
+// "Christmas Eve"
+
+// Is it a business day?
+CzechHolidays.isBusinessDay(new Date('2024-12-24')); // false
+
+// Can I go shopping?
+CzechHolidays.areShopsClosed(new Date('2024-12-25')); // true
+CzechHolidays.areShopsRestricted(new Date('2024-12-24')); // true (Partial — closes at noon)
 ```
 
-
-
-## API Reference
-
-Below is the list of public functions along with their descriptions and parameters.
-
-| Function             | Description                                                                                          | Parameters                                                | Return Type       |
-|----------------------|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|-------------------|
-| `isHoliday`          | Checks if a specified date is a Czech holiday.                                                       | `date: Date`                                              | `boolean`         |
-| `getHolidayName`     | Retrieves the localized name of the holiday for a given date.                                        | `date: Date`<br/>`locale: HolidaySupportedLocales = 'cs'` | `string \| null`  |
-| `getHoliday`         | Returns the holiday object for a given date.                                                         | `date: Date`                                              | `Holiday \| null` |
-| `getHolidaysForYear` | Fetches all Czech holidays for a specified year. Optionally uses local storage to cache the results. | `year: number`<br/>`useLocalStorage: boolean = false`     | `Holiday[]`       |
-
-### Function Details
-
-- **`isHoliday(date: Date): boolean`**  
-  Checks if the provided date is a recognized Czech holiday by looking up the date in the internal holiday map.
-
-- **`getHolidayName(date: Date, locale: HolidaySupportedLocales = HolidaySupportedLocales.Czech): string | null`**  
-  Returns the name of the holiday on the given date in the specified locale (`'cs'` for Czech, `'en'` for English).
-  Returns `null` if there is no holiday on that date.
-
-- **`getHoliday(date: Date): Holiday | null`**  
-  Retrieves the full `Holiday` object for the specified date, providing detailed information such as the day, month,
-  name, description, and shop restriction status.
-
-- **`getHolidaysForYear(year: number, useLocalStorage: boolean = false): Holiday[]`**  
-  Compiles a list of all holidays for the specified year. If `useLocalStorage` is true, it will fetch the holidays from
-  local storage if available or calculate and store them otherwise.
-
-## Usage examples
-
-### Check if a Date is a Holiday
+## Business days
 
 ```typescript
-const date = new Date('2024-12-24');
-const isHoliday = CzechHolidays.isHoliday(date);
-console.log(isHoliday);  // Outputs: true if the date is a holiday
+// Working days in a month (great for payroll)
+CzechHolidays.getBusinessDaysInMonth(2024, 12); // 19
+
+// Next business day
+CzechHolidays.getNextBusinessDay(new Date('2024-12-24'));
+// Fri Dec 27 (skips holidays)
+
+// Add/subtract business days
+CzechHolidays.addBusinessDays(new Date('2024-12-20'), 5);
+// skips Dec 24-26 holidays + weekends
+
+// Count business days between two dates
+CzechHolidays.countBusinessDays(new Date('2024-12-20'), new Date('2024-12-31'));
+
+// Remaining business days this month
+CzechHolidays.getRemainingBusinessDays(new Date('2024-12-20'));
+
+// Is it the last business day of the month? (payroll deadline)
+CzechHolidays.isLastBusinessDayOfMonth(new Date('2024-12-31')); // true
 ```
 
-### Get the Name of a Holiday
+## Holiday lookup
 
 ```typescript
-const holidayName = CzechHolidays.getHolidayName(date, HolidaySupportedLocales.English);
-console.log(`Holiday: ${holidayName}`);  // Outputs the name of the holiday if it's a holiday
+// Get all holidays for a year
+CzechHolidays.getHolidaysForYear(2024); // Holiday[]
+
+// Holidays in a specific month
+CzechHolidays.getHolidaysByMonth(2024, 12); // DatedHoliday[]
+
+// Find holidays in a date range
+CzechHolidays.getHolidaysInRange(new Date('2024-12-01'), new Date('2025-01-31'));
+
+// Next / previous holiday from a date
+CzechHolidays.getNextHoliday(new Date('2024-06-15'));
+CzechHolidays.getPreviousHoliday(new Date('2024-06-15'));
+
+// Is tomorrow a holiday?
+CzechHolidays.isHolidayEve(new Date('2024-12-23')); // true
 ```
 
-### Get Holiday Details
+## Long weekends & bridge days
 
 ```typescript
-const holidayDetails = CzechHolidays.getHoliday(date);
-console.log(holidayDetails);  // Outputs the Holiday object with details
+// Find all long weekends (3+ consecutive days off that include a holiday)
+CzechHolidays.getLongWeekends(2024);
+// [{ start: Date, end: Date, days: 3, holidays: [...] }, ...]
+
+// Find bridge days (take 1 day off, get a longer break)
+CzechHolidays.getBridgeDays(2024);
+// [{ date: Date, surroundingHolidays: [...], totalDaysOff: 6 }, ...]
 ```
 
-### Get All Holidays for a Year
+## Types
 
 ```typescript
-const holidays = CzechHolidays.getHolidaysForYear(2024, true);
-console.log(holidays);  // Outputs an array of Holiday objects for the year 2024
+import type { Holiday, DatedHoliday, LongWeekend, BridgeDay } from '@clownmeister/czech-holidays';
+import { HolidayShopRestriction, HolidaySupportedLocales } from '@clownmeister/czech-holidays';
 ```
 
-### Holiday output format
+### Holiday
 
-```json
-{
-  "day": 24,
-  "month": 12,
-  "name": {
-    "cs": "Štědrý den",
-    "en": "Christmas Eve"
-  },
-  "description": {
-    "cs": "",
-    "en": "Christmas is celebrated during the evening of the 24th."
-  },
-  "shopRestriction": 2
+```typescript
+interface Holiday {
+  day: number;
+  month: number;
+  name: { cs: string; en: string };
+  description: { cs: string; en: string };
+  shopRestriction: HolidayShopRestriction; // Open (0), Closed (1), Partial (2)
+  isMoveable: boolean; // true for Easter-based holidays
 }
 ```
 
-### Shop restriction enum
+### Shop restrictions
 
-```typescript
-enum HolidayShopRestriction {
-  Open, //=0
-  Closed, //=1
-  Partial, //=2 - When shops close after set time
-}
-```
+| Value | Meaning |
+|-------|---------|
+| `Open` (0) | Shops open normally |
+| `Closed` (1) | Large retail (>200m²) must close |
+| `Partial` (2) | Shops close early (e.g. Christmas Eve at noon) |
 
-## Caching
+## Output formats
 
-If you call `getHolidayForYear` with second parameter `true`,
-it will fetch from local storage or regenerate
-and save it to local storage based on if it already exists.
+The package ships as ESM, CJS, and UMD with TypeScript declarations and sourcemaps.
 
-`CzechHolidays.getHolidayForYear(2024, true);`
+| Format | File | Use case |
+|--------|------|----------|
+| ESM | `czech-holidays.js` | Modern bundlers, Node.js |
+| CJS | `czech-holidays.cjs` | `require()`, older Node.js |
+| UMD | `czech-holidays.umd.cjs` | `<script>` tags, CDN |
 
-Other methods already use localstorage out of the box.
+## Full API
+
+See the [full API reference](./docs/API.md) for detailed documentation of all 24 methods.
 
 ## License
 
-This project is licensed under the terms of the MIT License - see the [LICENSE](./LICENSE.md) file for details.
+MIT — see [LICENSE](./LICENSE.md).
