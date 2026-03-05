@@ -9,8 +9,14 @@
 <body>
   <div class="app">
     <header>
-      <h1>Czech Holidays</h1>
-      <p class="subtitle">Interactive calendar powered by <a href="https://www.npmjs.com/package/@clownmeister/czech-holidays" target="_blank">@clownmeister/czech-holidays</a></p>
+      <div class="header-top">
+        <h1 id="page-title">Czech Holidays</h1>
+        <div class="lang-picker">
+          <button id="lang-cs" class="lang-btn" data-lang="cs">CZ</button>
+          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <p class="subtitle"><span id="subtitle-text">Interactive calendar powered by</span> <a href="https://www.npmjs.com/package/@clownmeister/czech-holidays" target="_blank">@clownmeister/czech-holidays</a></p>
     </header>
 
     <div class="stats-bar" id="stats-bar"></div>
@@ -23,44 +29,31 @@
           <button id="next-month" aria-label="Next month">&rarr;</button>
         </div>
         <div class="calendar-grid">
-          <div class="weekday-header">Mo</div>
-          <div class="weekday-header">Tu</div>
-          <div class="weekday-header">We</div>
-          <div class="weekday-header">Th</div>
-          <div class="weekday-header">Fr</div>
-          <div class="weekday-header weekend-header">Sa</div>
-          <div class="weekday-header weekend-header">Su</div>
+          <div id="weekday-headers"></div>
           <div id="calendar-cells"></div>
         </div>
-        <div class="legend">
-          <span class="legend-item"><span class="dot dot-today"></span> Today</span>
-          <span class="legend-item"><span class="dot dot-holiday"></span> Holiday</span>
-          <span class="legend-item"><span class="dot dot-bridge"></span> Bridge day</span>
-          <span class="legend-item"><span class="dot dot-weekend"></span> Weekend</span>
-          <span class="legend-item"><span class="dot dot-shops-closed"></span> Shops closed</span>
-          <span class="legend-item"><span class="dot dot-shops-partial"></span> Shops restricted</span>
-        </div>
+        <div class="legend" id="legend"></div>
       </main>
 
       <aside>
         <div class="panel" id="next-holiday-panel">
-          <h3>Next holiday</h3>
+          <h3 id="next-holiday-title">Next holiday</h3>
           <div id="next-holiday-content"></div>
         </div>
 
         <div class="panel" id="month-holidays-panel">
-          <h3>Holidays this month</h3>
+          <h3 id="month-holidays-title">Holidays this month</h3>
           <div id="month-holidays-list"></div>
         </div>
 
         <div class="panel" id="long-weekends-panel">
-          <h3>Long weekends this year</h3>
+          <h3 id="long-weekends-title">Long weekends this year</h3>
           <div id="long-weekends-list"></div>
         </div>
 
         <div class="panel" id="bridge-days-panel">
-          <h3>Bridge days this year</h3>
-          <p class="panel-hint">Take 1 day off, get a longer break</p>
+          <h3 id="bridge-days-title">Bridge days this year</h3>
+          <p class="panel-hint" id="bridge-hint">Take 1 day off, get a longer break</p>
           <div id="bridge-days-list"></div>
         </div>
       </aside>

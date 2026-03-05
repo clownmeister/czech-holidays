@@ -48,10 +48,52 @@ header {
   margin-bottom: 1.5rem;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+}
+
 header h1 {
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.lang-picker {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.lang-btn:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 .subtitle {
@@ -152,6 +194,10 @@ main {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 3px;
+}
+
+#weekday-headers {
+  display: contents;
 }
 
 .weekday-header {
