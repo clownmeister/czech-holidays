@@ -41,6 +41,10 @@ body {
   padding: 2rem 1.5rem;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Header */
 
 header {
@@ -171,6 +175,11 @@ main {
   font-weight: 600;
 }
 
+.calendar-header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .calendar-header button {
   background: var(--surface-hover);
   border: 1px solid var(--border);
@@ -188,6 +197,10 @@ main {
 
 .calendar-header button:hover {
   background: var(--border);
+}
+
+.view-toggle-btn {
+  font-size: 0.9rem !important;
 }
 
 .calendar-grid {
@@ -286,6 +299,19 @@ main {
   border-bottom: 2px solid var(--shops-partial);
 }
 
+/* Flash animation for sidebar navigation */
+
+@keyframes cell-flash {
+  0% { box-shadow: 0 0 0 0 rgba(108, 140, 255, 0.7); }
+  30% { box-shadow: 0 0 0 6px rgba(108, 140, 255, 0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(108, 140, 255, 0); }
+}
+
+.day-cell.flash {
+  animation: cell-flash 1.5s ease-out;
+  z-index: 5;
+}
+
 /* Shop badge */
 
 .shop-badge {
@@ -368,6 +394,90 @@ main {
 .dot-weekend { background: var(--weekend-text); }
 .dot-shops-closed { background: var(--shops-closed); }
 .dot-shops-partial { background: var(--shops-partial); }
+
+/* Year overview */
+
+.year-view {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.mini-month {
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.mini-month:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
+}
+
+.mini-month-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.mini-weekday {
+  text-align: center;
+  font-size: 0.45rem;
+  color: var(--text-muted);
+  padding: 1px 0;
+  opacity: 0.5;
+}
+
+.mini-day {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  min-height: 8px;
+}
+
+.mini-day.empty {
+  background: transparent;
+}
+
+.mini-day.weekend {
+  background: var(--weekend-bg);
+}
+
+.mini-day.today {
+  outline: 1px solid var(--today);
+  background: var(--today-bg);
+}
+
+.mini-day.holiday {
+  background: var(--holiday);
+}
+
+.mini-day.bridge-day {
+  background: var(--bridge);
+}
+
+.mini-day.long-weekend-day {
+  background: rgba(107, 203, 119, 0.25);
+}
+
+.mini-day.shops-closed {
+  border-bottom: 1px solid var(--shops-closed);
+}
+
+.mini-day.shops-partial {
+  border-bottom: 1px solid var(--shops-partial);
+}
 
 /* Sidebar */
 
@@ -458,6 +568,25 @@ aside {
   font-size: 0.8rem;
 }
 
+/* Clickable sidebar items */
+
+.clickable {
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.clickable:hover {
+  background: var(--surface-hover);
+}
+
+.holiday-list-item.clickable,
+.lw-item.clickable,
+.bridge-item.clickable {
+  padding: 0.5rem 0.4rem;
+  margin: 0 -0.4rem;
+}
+
 .empty-message {
   color: var(--text-muted);
   font-size: 0.85rem;
@@ -497,6 +626,10 @@ footer a:hover {
   .stats-bar {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .year-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 550px) {
@@ -522,5 +655,9 @@ footer a:hover {
 
   header h1 {
     font-size: 1.4rem;
+  }
+
+  .year-view {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Czech Holidays Calendar</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127464;&#127487;</text></svg>" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -26,12 +27,20 @@
         <div class="calendar-header">
           <button id="prev-month" aria-label="Previous month">&larr;</button>
           <h2 id="month-title"></h2>
-          <button id="next-month" aria-label="Next month">&rarr;</button>
+          <div class="calendar-header-actions">
+            <button id="view-toggle" class="view-toggle-btn" aria-label="Toggle year view">
+              <span id="view-toggle-icon">&#9638;</span>
+            </button>
+            <button id="next-month" aria-label="Next month">&rarr;</button>
+          </div>
         </div>
-        <div class="calendar-grid">
-          <div id="weekday-headers"></div>
-          <div id="calendar-cells"></div>
+        <div id="month-view">
+          <div class="calendar-grid">
+            <div id="weekday-headers"></div>
+            <div id="calendar-cells"></div>
+          </div>
         </div>
+        <div id="year-view" class="year-view hidden"></div>
         <div class="legend" id="legend"></div>
       </main>
 
