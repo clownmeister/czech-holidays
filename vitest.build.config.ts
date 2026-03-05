@@ -4,8 +4,7 @@ import commonConfig from './vite.config';
 export default mergeConfig(commonConfig, {
   test: {
     globals: true,
-    environment: 'jsdom',
-    include: ['tests/test.ts', 'tests/**/*.test.ts'],
-    exclude: ['tests/build/**']
+    environment: 'node',
+    include: ['tests/build/**/*.test.ts']
   }
 });

@@ -29,8 +29,9 @@ jobs:
         run: |
           corepack enable
           yarn install --immutable
-          yarn build
+          yarn typecheck
           yarn test
+          yarn test:build
 
   publish-package:
     if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'

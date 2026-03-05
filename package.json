@@ -2,25 +2,42 @@
   "name": "@clownmeister/czech-holidays",
   "type": "module",
   "version": "1.0.1",
-  "description": "Provides Czech holidays with no historical data. Supports local storage caching.",
+  "description": "Czech public holidays — business day calculations, shop restrictions, long weekends, bridge days and more.",
   "keywords": [
     "holiday",
     "holidays",
     "czech",
     "public",
     "czech-holidays",
+    "business-days",
+    "working-days",
+    "shop-restrictions",
     "clownmeister"
   ],
   "repository": {
     "url": "git+https://github.com/clownmeister/czech-holidays.git"
   },
   "author": "ClownMeister",
+  "license": "MIT",
   "publishConfig": {
     "access": "public",
     "@clownmeister:registry": "https://registry.npmjs.org"
   },
-  "main": "./dist/czech-holidays.esm.js",
-  "types": "dist/czech-holidays.d.ts",
+  "main": "./dist/czech-holidays.cjs",
+  "module": "./dist/czech-holidays.js",
+  "types": "./dist/czech-holidays.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/czech-holidays.d.ts",
+        "default": "./dist/czech-holidays.js"
+      },
+      "require": {
+        "types": "./dist/czech-holidays.d.ts",
+        "default": "./dist/czech-holidays.cjs"
+      }
+    }
+  },
   "files": [
     "dist/**/*"
   ],
@@ -34,18 +51,17 @@
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src",
     "test": "vitest --run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:build": "vite build && vitest --run --config vitest.build.config.ts"
   },
   "devDependencies": {
-    "@types/jsdom": "^21.1.6",
-    "@types/node": "^20.12.7",
-    "autoprefixer": "^10.4.19",
-    "jsdom": "^24.0.0",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vite-plugin-dts": "^3.9.0",
-    "vitest": "^1.6.0"
+    "@types/jsdom": "^28.0.0",
+    "@types/node": "^25.3.3",
+    "jsdom": "^28.1.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18"
   }
 }

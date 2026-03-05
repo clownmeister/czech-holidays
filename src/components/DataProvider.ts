@@ -1,4 +1,4 @@
-import { Holiday, HolidayShopRestriction } from '@app/components/CzechHolidays.ts';
+import { Holiday, HolidayShopRestriction } from '@app/components/types.ts';
 import { calculateEasterHolidays } from '@app/components/EasterCalculator.ts';
 
 export function getEasterHolidays(year: number): Holiday[] {
@@ -15,7 +15,8 @@ export function getEasterHolidays(year: number): Holiday[] {
         cs: '',
         en: ''
       },
-      shopRestriction: HolidayShopRestriction.Open
+      shopRestriction: HolidayShopRestriction.Open,
+      isMoveable: true
     },
     {
       day: easterHolidays.easterMonday.getDate(),
@@ -28,7 +29,8 @@ export function getEasterHolidays(year: number): Holiday[] {
         cs: '',
         en: ''
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: true
     }
   ];
 }
@@ -46,7 +48,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '1993 – vznik samostatné České republiky',
         en: 'Czechoslovakia split into the Czech Republic and Slovakia.'
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }, {
       day: 1,
       month: 5,
@@ -58,7 +61,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '',
         en: ''
       },
-      shopRestriction: HolidayShopRestriction.Open
+      shopRestriction: HolidayShopRestriction.Open,
+      isMoveable: false
     }, {
       day: 8,
       month: 5,
@@ -70,7 +74,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '1945 – konec druhé světové války v Evropě',
         en: '1945, the end of the European part of World War II.'
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }, {
       day: 5,
       month: 7,
@@ -82,7 +87,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '863 – příchod bratrů, kteří přinesli křesťanství a vzdělanost na Velkou Moravu',
         en: 'In 863, Church teachers St. Cyril (Constantine) and Metoděj (Methodius) came from the Balkans to Great Moravia to propagate Christian faith and literacy.'
       },
-      shopRestriction: HolidayShopRestriction.Open
+      shopRestriction: HolidayShopRestriction.Open,
+      isMoveable: false
     }, {
       day: 6,
       month: 7,
@@ -94,7 +100,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '1415',
         en: 'The religious reformer Jan Hus was burned at the stake in 1415.'
       },
-      shopRestriction: HolidayShopRestriction.Open
+      shopRestriction: HolidayShopRestriction.Open,
+      isMoveable: false
     }, {
       day: 28,
       month: 9,
@@ -106,7 +113,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '935 – zavraždění knížete Václava',
         en: 'In 935, St. Wenceslas, Duke of Bohemia, now patron of the Czech State, was murdered by his brother.'
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }, {
       day: 28,
       month: 10,
@@ -118,7 +126,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '1918 – vznik Československa',
         en: 'Independence Day and Creation of Czechoslovakia in 1918.'
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }, {
       day: 17,
       month: 11,
@@ -130,7 +139,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '1939 – uzavření českých vysokých škol nacisty, 1989 – studentské protesty, které spustily sametovou revoluci',
         en: 'Commemorating the student demonstration against Nazi occupation in 1939, and the demonstration in 1989 that started the Velvet Revolution.'
       },
-      shopRestriction: HolidayShopRestriction.Open
+      shopRestriction: HolidayShopRestriction.Open,
+      isMoveable: false
     }, {
       day: 24,
       month: 12,
@@ -142,7 +152,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '',
         en: 'Christmas is celebrated during the evening of the 24th.'
       },
-      shopRestriction: HolidayShopRestriction.Partial
+      shopRestriction: HolidayShopRestriction.Partial,
+      isMoveable: false
     }, {
       day: 25,
       month: 12,
@@ -154,7 +165,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '',
         en: ''
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }, {
       day: 26,
       month: 12,
@@ -166,7 +178,8 @@ export function getFixedHolidays(): Holiday[] {
         cs: '',
         en: ''
       },
-      shopRestriction: HolidayShopRestriction.Closed
+      shopRestriction: HolidayShopRestriction.Closed,
+      isMoveable: false
     }
   ];
 }
