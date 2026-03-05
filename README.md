@@ -13,15 +13,35 @@ Zero-dependency Czech public holiday library. Works in Node.js, browsers, and an
 
 ```bash
 npm install @clownmeister/czech-holidays
+# or
+yarn add @clownmeister/czech-holidays
+# or
+pnpm add @clownmeister/czech-holidays
 ```
 
+### ESM (recommended)
 ```typescript
 import CzechHolidays from '@clownmeister/czech-holidays';
+import type { Holiday, DatedHoliday } from '@clownmeister/czech-holidays';
 ```
 
-Also works with `require()`:
+### CommonJS
 ```javascript
 const { default: CzechHolidays } = require('@clownmeister/czech-holidays');
+```
+
+### CDN / `<script>` tag
+```html
+<script src="https://unpkg.com/@clownmeister/czech-holidays"></script>
+<script>
+  const { default: CzechHolidays } = CzechHolidays;
+  console.log(CzechHolidays.isHoliday(new Date()));
+</script>
+```
+
+Also available via jsDelivr:
+```
+https://cdn.jsdelivr.net/npm/@clownmeister/czech-holidays
 ```
 
 ## Quick start
