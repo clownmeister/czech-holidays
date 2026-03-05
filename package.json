@@ -1,7 +1,7 @@
 {
   "name": "@clownmeister/czech-holidays",
   "type": "module",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Czech public holidays — business day calculations, shop restrictions, long weekends, bridge days and more.",
   "keywords": [
     "holiday",
@@ -43,7 +43,8 @@
   ],
   "packageManager": "yarn@4.2.2",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config demo/vite.config.ts",
+    "demo:build": "vite build --config demo/vite.config.ts",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",

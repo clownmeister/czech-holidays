@@ -6,6 +6,8 @@
 
 Zero-dependency Czech public holiday library. Works in Node.js, browsers, and any JS runtime.
 
+**[Live Demo & Calendar](https://clownmeister.github.io/czech-holidays/)**
+
 ## Install
 
 ```bash

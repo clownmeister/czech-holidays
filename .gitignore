@@ -134,3 +134,6 @@ dist
 # Claude Code
 CLAUDE.md
 .claude/
+
+# Demo build
+dist-demo
