@@ -1,0 +1,29 @@
+name: Manual npm publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+          scope: clownmeister
+
+      - name: Install and build
+        run: |
+          corepack enable
+          yarn install --immutable
+          yarn build
+
+      - name: Publish to npm
+        run: |
+          yarn config set npmScopes.clownmeister.npmAuthToken $NPM_AUTH_TOKEN
+          yarn npm publish
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
